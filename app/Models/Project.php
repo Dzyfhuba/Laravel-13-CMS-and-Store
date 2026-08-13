@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasFactory;
 
     protected $fillable = [
         'name',
@@ -18,6 +19,8 @@ class Project extends Model
         'content',
         'tags',
         'related_projects',
+        'related_products',
+        'related_services',
         'related_blogs',
     ];
 
@@ -33,6 +36,8 @@ class Project extends Model
             'carousel' => 'array',
             'tags' => 'array',
             'related_projects' => 'array',
+            'related_products' => 'array',
+            'related_services' => 'array',
             'related_blogs' => 'array',
         ];
     }
