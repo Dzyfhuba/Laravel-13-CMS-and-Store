@@ -19,7 +19,7 @@ class ProjectForm
     {
         return $schema
             ->components([
-                TextInput::make('title')->required()->columnSpanFull(),
+                TextInput::make('name')->required()->columnSpanFull(),
                 TextInput::make('description_short'),
                 TextInput::make('description_long'),
                 FileUpload::make('thumbnail')->image(),
