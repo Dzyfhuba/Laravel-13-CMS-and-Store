@@ -4,6 +4,8 @@
     import { toUrl } from '@/lib/utils';
     import { dashboard, login } from '@/routes';
     import { register } from '@/routes';
+    import MyPhoto from '@/assets/ma-photo.png';
+    import BgImgOnboarding from '@/assets/seni.png';
 
     const auth = $derived(page.props.auth);
 </script>
@@ -11,7 +13,9 @@
 <AppHead></AppHead>
 
 <header>
-    <nav class="h-14 py-3 px-6 flex justify-between fixed top-0 bg-base-100 w-full">
+    <nav
+        class="h-14 py-3 px-6 flex justify-between fixed top-0 backdrop-blur-md w-full"
+    >
         <a href="/#">
             <img
                 src="/hafidz-ubaidillah-logo.png"
@@ -28,23 +32,677 @@
         </div>
     </nav>
 </header>
-<section id="onboarding" class="min-h-screen bg-amber-950">
-    <p>berisi pemancing</p>
+<section
+    id="onboarding"
+    class="min-h-screen bg-linear-to-br from-base-100 to-base-200 relative overflow-hidden"
+>
+    <div class="relative z-20 mx-auto flex min-h-screen max-w-7xl items-center justify-end px-6 lg:px-12">
+        <div class="max-w-xl text-center lg:text-right">
+            <p class="text-sm font-semibold uppercase tracking-[0.25em] text-primary/80">
+                Fullstack Web Developer
+            </p>
+            <h1 class="mt-4 text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl">
+                Hafidz Ubaidillah
+            </h1>
+            <p class="mt-5 text-base leading-8 text-base-content/80 sm:text-lg">
+                Seorang fullstack web developer yang senang mengeksplorasi hal baru.
+                Saya menikmati membangun solusi digital yang bermanfaat, responsif, dan
+                mudah digunakan untuk kebutuhan bisnis maupun pengguna.
+            </p>
+            <p class="mt-4 text-lg font-semibold text-primary">
+                Terbuka untuk pekerjaan dan project.
+            </p>
+        </div>
+    </div>
+
+    <div class="absolute inset-x-0 bottom-0 z-10 h-[50vh] w-full">
+        <img
+            src={MyPhoto}
+            alt="hafidz ubaidillah"
+            class="absolute bottom-0 left-0 z-20 h-[88%] w-auto object-contain drop-shadow-2xl"
+        />
+        <img
+            src={BgImgOnboarding}
+            alt="background"
+            class="absolute bottom-0 left-0 z-0 h-full w-full object-cover object-bottom opacity-80"
+        />
+    </div>
 </section>
-<section id="onboarding" class="min-h-screen bg-blue-950">
-    <p>perkenalan dan branding</p>
+<!-- SECTION: Perkenalan & Branding -->
+<section
+    id="branding"
+    class="min-h-screen bg-linear-to-bl from-base-200 to-base-100 flex items-center"
+>
+    <div class="w-full mx-auto px-6 py-20 lg:px-12">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <!-- Teks Content -->
+                <div class="order-2 lg:order-1 text-center lg:text-left">
+                    <h2 class="text-3xl lg:text-4xl font-black tracking-tight">
+                        Tentang Hafidz Ubaidillah
+                    </h2>
+                    <p class="mt-4 text-base leading-8 text-base-content/80">
+                        Saya adalah fullstack web developer dengan pengalaman dalam membangun aplikasi web modern, responsif, dan scalable. Spesialisasi saya mencakup frontend development dengan React, Svelte, dan Vue.js, serta backend dengan Laravel, Node.js, dan Python.
+                    </p>
+                    <p class="mt-4 text-base leading-8 text-base-content/80">
+                        Saya percaya pada pentingnya user experience yang baik, clean code, dan best practices dalam development. Selalu semangat untuk belajar teknologi baru dan mengoptimalkan workflow development.
+                    </p>
+                    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href={login()} class="btn btn-primary">Hubungi Saya</a>
+                        <a href="#projects" class="btn btn-outline">Lihat Portfolio</a>
+                    </div>
+                </div>
+
+                <!-- Visual / Gambar Aksesori -->
+                <!-- PERLU GAMBAR: Foto profesional atau ilustrasi branding -->
+                <div class="order-1 lg:order-2 flex items-center justify-center">
+                    <div class="w-full aspect-square bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl flex items-center justify-center border-2 border-dashed border-primary/40">
+                        <div class="text-center">
+                            <p class="text-sm text-base-content/60 font-semibold">
+                                [PERLU GAMBAR: Foto Profesional]
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-<section id="product" class="min-h-screen bg-green-950">
-    <p>onboarding</p>
+
+<!-- SECTION: Produk/Portfolio Highlight -->
+<section
+    id="products"
+    class="min-h-screen bg-linear-to-br from-base-100 to-base-200 flex items-center"
+>
+    <div class="w-full mx-auto px-6 py-20 lg:px-12">
+        <div class="max-w-5xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <p class="text-sm font-semibold uppercase tracking-[0.25em] text-primary/80">
+                    PORTFOLIO
+                </p>
+                <h2 class="mt-2 text-3xl lg:text-4xl font-black tracking-tight">
+                    Produk & Solusi Terbaru
+                </h2>
+                <p class="mt-4 text-base text-base-content/80 max-w-2xl mx-auto">
+                    Beberapa produk dan solusi yang telah saya kerjakan untuk klien dan proyek personal
+                </p>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Product Card 1 -->
+                <div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+                    <!-- PERLU GAMBAR: Screenshot atau thumbnail produk 1 -->
+                    <div class="h-48 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-base-300">
+                        <p class="text-sm text-base-content/60 font-semibold">[PERLU GAMBAR: Produk 1]</p>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title text-lg">
+                            [template nama_produk_1]
+                        </h3>
+                        <p class="text-sm text-base-content/70">
+                            Deskripsi singkat tentang produk atau solusi yang telah dibuat dengan fitur-fitur unggulan.
+                        </p>
+                        <div class="card-actions justify-end mt-4">
+                            <a href="#" class="link link-primary text-sm">Pelajari Lebih Lanjut →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+                    <!-- PERLU GAMBAR: Screenshot atau thumbnail produk 2 -->
+                    <div class="h-48 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-base-300">
+                        <p class="text-sm text-base-content/60 font-semibold">[PERLU GAMBAR: Produk 2]</p>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title text-lg">
+                            [template nama_produk_2]
+                        </h3>
+                        <p class="text-sm text-base-content/70">
+                            Deskripsi singkat tentang produk atau solusi yang telah dibuat dengan fitur-fitur unggulan.
+                        </p>
+                        <div class="card-actions justify-end mt-4">
+                            <a href="#" class="link link-primary text-sm">Pelajari Lebih Lanjut →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+                    <!-- PERLU GAMBAR: Screenshot atau thumbnail produk 3 -->
+                    <div class="h-48 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-base-300">
+                        <p class="text-sm text-base-content/60 font-semibold">[PERLU GAMBAR: Produk 3]</p>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title text-lg">
+                            [template nama_produk_3]
+                        </h3>
+                        <p class="text-sm text-base-content/70">
+                            Deskripsi singkat tentang produk atau solusi yang telah dibuat dengan fitur-fitur unggulan.
+                        </p>
+                        <div class="card-actions justify-end mt-4">
+                            <a href="#" class="link link-primary text-sm">Pelajari Lebih Lanjut →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="text-center mt-12">
+                <a href="#" class="btn btn-primary btn-lg">
+                    Lihat Semua Produk
+                </a>
+            </div>
+        </div>
+    </div>
 </section>
-<section id="services" class="min-h-screen bg-red-950">
-    <p>services short list</p>
+
+<!-- SECTION: Layanan (Services) -->
+<section
+    id="services"
+    class="min-h-screen bg-linear-to-bl from-base-200 to-base-100 flex items-center"
+>
+    <div class="w-full mx-auto px-6 py-20 lg:px-12">
+        <div class="max-w-5xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <p class="text-sm font-semibold uppercase tracking-[0.25em] text-primary/80">
+                    LAYANAN
+                </p>
+                <h2 class="mt-2 text-3xl lg:text-4xl font-black tracking-tight">
+                    Jasa yang Saya Tawarkan
+                </h2>
+                <p class="mt-4 text-base text-base-content/80 max-w-2xl mx-auto">
+                    Berbagai layanan profesional untuk kebutuhan digital dan web development bisnis Anda
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-base-100 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <!-- PERLU GAMBAR: Icon atau ilustrasi untuk Web Development -->
+                    <div class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">🚀</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Web Development</h3>
+                    <p class="text-base-content/70 mb-4">
+                        Membangun website dan aplikasi web modern dengan teknologi terkini, responsif, dan performance optimal untuk bisnis Anda.
+                    </p>
+                    <ul class="space-y-2 text-sm text-base-content/70">
+                        <li>✓ Frontend Development (React, Svelte, Vue)</li>
+                        <li>✓ Backend Development (Laravel, Node.js)</li>
+                        <li>✓ Full Stack Solutions</li>
+                        <li>✓ API Development & Integration</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-base-100 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <!-- PERLU GAMBAR: Icon atau ilustrasi untuk UI/UX Design -->
+                    <div class="w-16 h-16 bg-secondary/20 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">🎨</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">UI/UX Design</h3>
+                    <p class="text-base-content/70 mb-4">
+                        Merancang antarmuka yang indah, intuitif, dan user-friendly untuk memberikan pengalaman terbaik kepada pengguna.
+                    </p>
+                    <ul class="space-y-2 text-sm text-base-content/70">
+                        <li>✓ User Interface Design</li>
+                        <li>✓ User Experience Research</li>
+                        <li>✓ Wireframing & Prototyping</li>
+                        <li>✓ Design System Development</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-base-100 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <!-- PERLU GAMBAR: Icon atau ilustrasi untuk Konsultasi -->
+                    <div class="w-16 h-16 bg-accent/20 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">💡</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Technical Consulting</h3>
+                    <p class="text-base-content/70 mb-4">
+                        Memberikan konsultasi teknis untuk optimasi teknologi, architecture design, dan strategi digital bisnis Anda.
+                    </p>
+                    <ul class="space-y-2 text-sm text-base-content/70">
+                        <li>✓ Technology Selection</li>
+                        <li>✓ Architecture Review</li>
+                        <li>✓ Performance Optimization</li>
+                        <li>✓ Best Practices & Standards</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-base-100 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <!-- PERLU GAMBAR: Icon atau ilustrasi untuk Maintenance & Support -->
+                    <div class="w-16 h-16 bg-info/20 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">🔧</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Maintenance & Support</h3>
+                    <p class="text-base-content/70 mb-4">
+                        Layanan pemeliharaan dan dukungan teknis berkelanjutan untuk memastikan aplikasi Anda selalu berjalan optimal.
+                    </p>
+                    <ul class="space-y-2 text-sm text-base-content/70">
+                        <li>✓ Bug Fixing & Troubleshooting</li>
+                        <li>✓ Feature Enhancement</li>
+                        <li>✓ Security Updates</li>
+                        <li>✓ Performance Monitoring</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-12">
+                <p class="text-base-content/80 mb-6">Tertarik dengan layanan saya?</p>
+                <a href="[template email_atau_contact_link]" class="btn btn-primary btn-lg">
+                    Hubungi Saya untuk Konsultasi Gratis
+                </a>
+            </div>
+        </div>
+    </div>
 </section>
-<section id="projects" class="min-h-screen bg-cyan-950">
-    <p>projects short list</p>
+
+<!-- SECTION: Proyek (Projects) -->
+<section
+    id="projects"
+    class="min-h-screen bg-linear-to-br from-base-100 to-base-200 flex items-center"
+>
+    <div class="w-full mx-auto px-6 py-20 lg:px-12">
+        <div class="max-w-5xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <p class="text-sm font-semibold uppercase tracking-[0.25em] text-primary/80">
+                    SHOWCASE
+                </p>
+                <h2 class="mt-2 text-3xl lg:text-4xl font-black tracking-tight">
+                    Proyek Unggulan
+                </h2>
+                <p class="mt-4 text-base text-base-content/80 max-w-2xl mx-auto">
+                    Koleksi proyek yang menunjukkan kemampuan dan pengalaman dalam berbagai domain dan teknologi
+                </p>
+            </div>
+
+            <!-- Project Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Project Card 1 -->
+                <div class="group overflow-hidden rounded-xl bg-base-100 shadow-md hover:shadow-xl transition-all">
+                    <!-- PERLU GAMBAR: Screenshot proyek 1 -->
+                    <div class="h-64 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center overflow-hidden">
+                        <p class="text-sm text-base-content/60 font-semibold">[PERLU GAMBAR: Proyek 1]</p>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">[template nama_proyek_1]</h3>
+                        <p class="text-sm text-base-content/70 mb-4">
+                            Deskripsi proyek dengan detail tentang teknologi yang digunakan, tantangan yang dihadapi, dan solusi yang diberikan.
+                        </p>
+                        <div class="mb-4">
+                            <p class="text-xs font-semibold text-base-content/60 mb-2">TEKNOLOGI:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge badge-sm">React</span>
+                                <span class="badge badge-sm">Laravel</span>
+                                <span class="badge badge-sm">PostgreSQL</span>
+                            </div>
+                        </div>
+                        <a href="#" class="link link-primary text-sm">Lihat Detail Proyek →</a>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="group overflow-hidden rounded-xl bg-base-100 shadow-md hover:shadow-xl transition-all">
+                    <!-- PERLU GAMBAR: Screenshot proyek 2 -->
+                    <div class="h-64 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center overflow-hidden">
+                        <p class="text-sm text-base-content/60 font-semibold">[PERLU GAMBAR: Proyek 2]</p>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">[template nama_proyek_2]</h3>
+                        <p class="text-sm text-base-content/70 mb-4">
+                            Deskripsi proyek dengan detail tentang teknologi yang digunakan, tantangan yang dihadapi, dan solusi yang diberikan.
+                        </p>
+                        <div class="mb-4">
+                            <p class="text-xs font-semibold text-base-content/60 mb-2">TEKNOLOGI:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge badge-sm">Vue.js</span>
+                                <span class="badge badge-sm">Node.js</span>
+                                <span class="badge badge-sm">MongoDB</span>
+                            </div>
+                        </div>
+                        <a href="#" class="link link-primary text-sm">Lihat Detail Proyek →</a>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="group overflow-hidden rounded-xl bg-base-100 shadow-md hover:shadow-xl transition-all">
+                    <!-- PERLU GAMBAR: Screenshot proyek 3 -->
+                    <div class="h-64 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center overflow-hidden">
+                        <p class="text-sm text-base-content/60 font-semibold">[PERLU GAMBAR: Proyek 3]</p>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">[template nama_proyek_3]</h3>
+                        <p class="text-sm text-base-content/70 mb-4">
+                            Deskripsi proyek dengan detail tentang teknologi yang digunakan, tantangan yang dihadapi, dan solusi yang diberikan.
+                        </p>
+                        <div class="mb-4">
+                            <p class="text-xs font-semibold text-base-content/60 mb-2">TEKNOLOGI:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge badge-sm">Svelte</span>
+                                <span class="badge badge-sm">Python</span>
+                                <span class="badge badge-sm">Firebase</span>
+                            </div>
+                        </div>
+                        <a href="#" class="link link-primary text-sm">Lihat Detail Proyek →</a>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div class="group overflow-hidden rounded-xl bg-base-100 shadow-md hover:shadow-xl transition-all">
+                    <!-- PERLU GAMBAR: Screenshot proyek 4 -->
+                    <div class="h-64 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center overflow-hidden">
+                        <p class="text-sm text-base-content/60 font-semibold">[PERLU GAMBAR: Proyek 4]</p>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">[template nama_proyek_4]</h3>
+                        <p class="text-sm text-base-content/70 mb-4">
+                            Deskripsi proyek dengan detail tentang teknologi yang digunakan, tantangan yang dihadapi, dan solusi yang diberikan.
+                        </p>
+                        <div class="mb-4">
+                            <p class="text-xs font-semibold text-base-content/60 mb-2">TEKNOLOGI:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="badge badge-sm">Next.js</span>
+                                <span class="badge badge-sm">GraphQL</span>
+                                <span class="badge badge-sm">Docker</span>
+                            </div>
+                        </div>
+                        <a href="#" class="link link-primary text-sm">Lihat Detail Proyek →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-12">
+                <a href="#" class="btn btn-primary btn-lg">
+                    Lihat Semua Proyek
+                </a>
+            </div>
+        </div>
+    </div>
 </section>
-<section id="blogs" class="min-h-screen bg-indigo-950">
-    <p>blogs short list</p>
+
+<!-- SECTION: Blog -->
+<section
+    id="blogs"
+    class="min-h-screen bg-linear-to-bl from-base-200 to-base-100 flex items-center"
+>
+    <div class="w-full mx-auto px-6 py-20 lg:px-12">
+        <div class="max-w-5xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <p class="text-sm font-semibold uppercase tracking-[0.25em] text-primary/80">
+                    BLOG
+                </p>
+                <h2 class="mt-2 text-3xl lg:text-4xl font-black tracking-tight">
+                    Artikel & Tulisan Terbaru
+                </h2>
+                <p class="mt-4 text-base text-base-content/80 max-w-2xl mx-auto">
+                    Berbagi pengetahuan, tips, dan pengalaman dalam dunia web development dan teknologi
+                </p>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Blog Card 1 -->
+                <div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+                    <!-- PERLU GAMBAR: Featured image untuk blog 1 -->
+                    <div class="h-40 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-base-300">
+                        <p class="text-sm text-base-content/60 font-semibold">[PERLU GAMBAR: Blog 1]</p>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title text-base">
+                            [template judul_artikel_1]
+                        </h3>
+                        <p class="text-xs text-base-content/60">[template tanggal_publikasi] • 5 min read</p>
+                        <p class="text-sm text-base-content/70">
+                            Ringkasan singkat dari artikel yang membahas topik menarik terkait web development, tips coding, atau pengalaman pribadi.
+                        </p>
+                        <div class="card-actions justify-between items-center mt-4">
+                            <div class="flex gap-2">
+                                <span class="badge badge-sm badge-outline">[template kategori_1]</span>
+                            </div>
+                            <a href="#" class="link link-primary text-sm">Baca →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Card 2 -->
+                <div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+                    <!-- PERLU GAMBAR: Featured image untuk blog 2 -->
+                    <div class="h-40 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-base-300">
+                        <p class="text-sm text-base-content/60 font-semibold">[PERLU GAMBAR: Blog 2]</p>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title text-base">
+                            [template judul_artikel_2]
+                        </h3>
+                        <p class="text-xs text-base-content/60">[template tanggal_publikasi] • 7 min read</p>
+                        <p class="text-sm text-base-content/70">
+                            Ringkasan singkat dari artikel yang membahas topik menarik terkait web development, tips coding, atau pengalaman pribadi.
+                        </p>
+                        <div class="card-actions justify-between items-center mt-4">
+                            <div class="flex gap-2">
+                                <span class="badge badge-sm badge-outline">[template kategori_2]</span>
+                            </div>
+                            <a href="#" class="link link-primary text-sm">Baca →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Card 3 -->
+                <div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow">
+                    <!-- PERLU GAMBAR: Featured image untuk blog 3 -->
+                    <div class="h-40 bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-base-300">
+                        <p class="text-sm text-base-content/60 font-semibold">[PERLU GAMBAR: Blog 3]</p>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title text-base">
+                            [template judul_artikel_3]
+                        </h3>
+                        <p class="text-xs text-base-content/60">[template tanggal_publikasi] • 6 min read</p>
+                        <p class="text-sm text-base-content/70">
+                            Ringkasan singkat dari artikel yang membahas topik menarik terkait web development, tips coding, atau pengalaman pribadi.
+                        </p>
+                        <div class="card-actions justify-between items-center mt-4">
+                            <div class="flex gap-2">
+                                <span class="badge badge-sm badge-outline">[template kategori_3]</span>
+                            </div>
+                            <a href="#" class="link link-primary text-sm">Baca →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-12">
+                <a href="#" class="btn btn-primary btn-lg">
+                    Baca Semua Artikel
+                </a>
+            </div>
+        </div>
+    </div>
 </section>
-<section id="affiliate" class="min-h-screen bg-indigo-950">afiliasi</section>
-<footer id="footer" class="min-h-screen bg-indigo-950">footer</footer>
+
+<!-- SECTION: Affiliate & Partnership -->
+<section
+    id="affiliate"
+    class="min-h-screen bg-linear-to-br from-base-100 to-base-200 flex items-center"
+>
+    <div class="w-full mx-auto px-6 py-20 lg:px-12">
+        <div class="max-w-5xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <p class="text-sm font-semibold uppercase tracking-[0.25em] text-primary/80">
+                    PARTNERSHIP
+                </p>
+                <h2 class="mt-2 text-3xl lg:text-4xl font-black tracking-tight">
+                    Afiliasi & Rekomendasi
+                </h2>
+                <p class="mt-4 text-base text-base-content/80 max-w-2xl mx-auto">
+                    Produk dan layanan yang saya percaya dan rekomendasikan untuk mendukung workflow development Anda
+                </p>
+            </div>
+
+            <!-- Affiliate Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Affiliate 1 -->
+                <div class="bg-base-100 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-base-300">
+                    <!-- PERLU GAMBAR: Logo atau badge afiliasi 1 -->
+                    <div class="h-24 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg flex items-center justify-center mb-4">
+                        <p class="text-xs text-base-content/60 font-semibold">[PERLU GAMBAR: Logo 1]</p>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">[template nama_produk_afiliasi_1]</h3>
+                    <p class="text-sm text-base-content/70 mb-4">
+                        Penjelasan singkat tentang produk/layanan ini dan mengapa saya merekomendasikannya untuk kebutuhan Anda.
+                    </p>
+                    <a href="[template link_afiliasi_1]" target="_blank" rel="noopener noreferrer" class="link link-primary text-sm">
+                        Kunjungi →
+                    </a>
+                </div>
+
+                <!-- Affiliate 2 -->
+                <div class="bg-base-100 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-base-300">
+                    <!-- PERLU GAMBAR: Logo atau badge afiliasi 2 -->
+                    <div class="h-24 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg flex items-center justify-center mb-4">
+                        <p class="text-xs text-base-content/60 font-semibold">[PERLU GAMBAR: Logo 2]</p>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">[template nama_produk_afiliasi_2]</h3>
+                    <p class="text-sm text-base-content/70 mb-4">
+                        Penjelasan singkat tentang produk/layanan ini dan mengapa saya merekomendasikannya untuk kebutuhan Anda.
+                    </p>
+                    <a href="[template link_afiliasi_2]" target="_blank" rel="noopener noreferrer" class="link link-primary text-sm">
+                        Kunjungi →
+                    </a>
+                </div>
+
+                <!-- Affiliate 3 -->
+                <div class="bg-base-100 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-base-300">
+                    <!-- PERLU GAMBAR: Logo atau badge afiliasi 3 -->
+                    <div class="h-24 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg flex items-center justify-center mb-4">
+                        <p class="text-xs text-base-content/60 font-semibold">[PERLU GAMBAR: Logo 3]</p>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">[template nama_produk_afiliasi_3]</h3>
+                    <p class="text-sm text-base-content/70 mb-4">
+                        Penjelasan singkat tentang produk/layanan ini dan mengapa saya merekomendasikannya untuk kebutuhan Anda.
+                    </p>
+                    <a href="[template link_afiliasi_3]" target="_blank" rel="noopener noreferrer" class="link link-primary text-sm">
+                        Kunjungi →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Newsletter CTA -->
+            <div class="mt-16 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-8 md:p-12 border border-primary/20">
+                <div class="max-w-2xl mx-auto text-center">
+                    <h3 class="text-2xl font-bold mb-4">Dapatkan Update Terbaru</h3>
+                    <p class="text-base-content/80 mb-6">
+                        Berlangganan newsletter saya untuk mendapatkan tips, artikel terbaru, dan update tentang tools & resources yang saya rekomendasikan.
+                    </p>
+                    <form class="flex flex-col sm:flex-row gap-3">
+                        <input
+                            type="email"
+                            placeholder="[template email_address]"
+                            class="input input-bordered flex-1"
+                            required
+                        />
+                        <button type="submit" class="btn btn-primary">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer
+    id="footer"
+    class="bg-neutral text-neutral-content py-16 px-6 lg:px-12"
+>
+    <div class="w-full mx-auto max-w-5xl">
+        <!-- Footer Top -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-8 border-b border-neutral-focus">
+            <!-- Brand -->
+            <div>
+                <a href="/#" class="text-xl font-bold mb-4 block hover:text-primary transition-colors">
+                    Hafidz Ubaidillah
+                </a>
+                <p class="text-sm text-neutral-content/80 mb-4">
+                    Fullstack Web Developer yang passionate tentang membangun solusi digital yang berguna dan inovatif.
+                </p>
+                <!-- Social Links -->
+                <div class="flex gap-4">
+                    <a href="[template github_profile]" target="_blank" rel="noopener noreferrer" class="link link-hover text-neutral-content hover:text-primary">
+                        GitHub
+                    </a>
+                    <a href="[template linkedin_profile]" target="_blank" rel="noopener noreferrer" class="link link-hover text-neutral-content hover:text-primary">
+                        LinkedIn
+                    </a>
+                    <a href="[template twitter_profile]" target="_blank" rel="noopener noreferrer" class="link link-hover text-neutral-content hover:text-primary">
+                        Twitter
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-neutral-content">Navigasi</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#products" class="link link-hover text-neutral-content hover:text-primary">Produk</a></li>
+                    <li><a href="#services" class="link link-hover text-neutral-content hover:text-primary">Layanan</a></li>
+                    <li><a href="#projects" class="link link-hover text-neutral-content hover:text-primary">Proyek</a></li>
+                    <li><a href="#blogs" class="link link-hover text-neutral-content hover:text-primary">Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-neutral-content">Layanan</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="link link-hover text-neutral-content hover:text-primary">Web Development</a></li>
+                    <li><a href="#" class="link link-hover text-neutral-content hover:text-primary">UI/UX Design</a></li>
+                    <li><a href="#" class="link link-hover text-neutral-content hover:text-primary">Consulting</a></li>
+                    <li><a href="#" class="link link-hover text-neutral-content hover:text-primary">Support</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-neutral-content">Hubungi</h4>
+                <ul class="space-y-2 text-sm">
+                    <li class="text-neutral-content/80">
+                        Email: <a href="[template email]" class="link link-hover text-neutral-content hover:text-primary">[template email_address]</a>
+                    </li>
+                    <li class="text-neutral-content/80">
+                        Phone: <a href="[template phone]" class="link link-hover text-neutral-content hover:text-primary">[template nomor_telepon]</a>
+                    </li>
+                    <li class="text-neutral-content/80">
+                        Location: [template lokasi]
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-neutral-content/80">
+                &copy; 2024 Hafidz Ubaidillah. All rights reserved.
+            </p>
+            <div class="flex gap-6 text-sm">
+                <a href="#" class="link link-hover text-neutral-content hover:text-primary">Privacy Policy</a>
+                <a href="#" class="link link-hover text-neutral-content hover:text-primary">Terms of Service</a>
+                <a href="#" class="link link-hover text-neutral-content hover:text-primary">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer>
