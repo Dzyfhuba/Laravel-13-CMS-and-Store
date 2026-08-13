@@ -24,5 +24,8 @@ class DatabaseSeeder extends Seeder
         }
 
         $this->callOnce(ProjectSeeder::class);
+        $this->callOnce(ProductSeeder::class);
+        $this->callOnce(ServiceSeeder::class);
+        $this->callOnce(BlogSeeder::class);
     }
 }
