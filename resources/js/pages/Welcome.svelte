@@ -132,7 +132,7 @@
         >
             <!-- Left: Photo/Visual with Layered Background -->
             <div class="order-2 lg:order-1 flex items-end justify-center lg:justify-start">
-                <div class="relative w-full lg:max-w-2xl h-80 sm:h-96 md:h-[500px] lg:h-[650px] top-0">
+                <div class="relative w-full lg:max-w-2xl h-80 sm:h-96 md:h-125 lg:h-162.5 top-0">
                     <!-- Background Artwork (Latar Belakang) -->
                     <img
                         src={BgImgOnboarding}
@@ -291,7 +291,7 @@
                             telah dibuat dengan fitur-fitur unggulan.
                         </p>
                         <div class="card-actions justify-end mt-4">
-                            <a href="#" class="link link-primary text-sm"
+                            <a href="#sd" class="link link-primary text-sm"
                                 >Pelajari Lebih Lanjut →</a
                             >
                         </div>
@@ -319,7 +319,7 @@
                             telah dibuat dengan fitur-fitur unggulan.
                         </p>
                         <div class="card-actions justify-end mt-4">
-                            <a href="#" class="link link-primary text-sm"
+                            <a href="#sd" class="link link-primary text-sm"
                                 >Pelajari Lebih Lanjut →</a
                             >
                         </div>
@@ -347,7 +347,7 @@
                             telah dibuat dengan fitur-fitur unggulan.
                         </p>
                         <div class="card-actions justify-end mt-4">
-                            <a href="#" class="link link-primary text-sm"
+                            <a href="#sd" class="link link-primary text-sm"
                                 >Pelajari Lebih Lanjut →</a
                             >
                         </div>
@@ -357,7 +357,7 @@
 
             <!-- CTA Button -->
             <div class="text-center mt-12">
-                <a href="#" class="btn btn-primary btn-lg">
+                <a href="#sd" class="btn btn-primary btn-lg">
                     Lihat Semua Produk
                 </a>
             </div>
@@ -565,7 +565,7 @@
                                 <span class="badge badge-sm">PostgreSQL</span>
                             </div>
                         </div>
-                        <a href="#" class="link link-primary text-sm"
+                        <a href="#sd" class="link link-primary text-sm"
                             >Lihat Detail Proyek →</a
                         >
                     </div>
@@ -604,7 +604,7 @@
                                 <span class="badge badge-sm">MongoDB</span>
                             </div>
                         </div>
-                        <a href="#" class="link link-primary text-sm"
+                        <a href="#sd" class="link link-primary text-sm"
                             >Lihat Detail Proyek →</a
                         >
                     </div>
@@ -643,7 +643,7 @@
                                 <span class="badge badge-sm">Firebase</span>
                             </div>
                         </div>
-                        <a href="#" class="link link-primary text-sm"
+                        <a href="#sd" class="link link-primary text-sm"
                             >Lihat Detail Proyek →</a
                         >
                     </div>
@@ -682,7 +682,7 @@
                                 <span class="badge badge-sm">Docker</span>
                             </div>
                         </div>
-                        <a href="#" class="link link-primary text-sm"
+                        <a href="#sd" class="link link-primary text-sm"
                             >Lihat Detail Proyek →</a
                         >
                     </div>
@@ -691,7 +691,7 @@
 
             <!-- CTA -->
             <div class="text-center mt-12">
-                <a href="#" class="btn btn-primary btn-lg">
+                <a href="#sd" class="btn btn-primary btn-lg">
                     Lihat Semua Proyek
                 </a>
             </div>
@@ -758,7 +758,7 @@
                                     >[template kategori_1]</span
                                 >
                             </div>
-                            <a href="#" class="link link-primary text-sm"
+                            <a href="#sd" class="link link-primary text-sm"
                                 >Baca →</a
                             >
                         </div>
@@ -797,7 +797,7 @@
                                     >[template kategori_2]</span
                                 >
                             </div>
-                            <a href="#" class="link link-primary text-sm"
+                            <a href="#sd" class="link link-primary text-sm"
                                 >Baca →</a
                             >
                         </div>
@@ -836,7 +836,7 @@
                                     >[template kategori_3]</span
                                 >
                             </div>
-                            <a href="#" class="link link-primary text-sm"
+                            <a href="#sd" class="link link-primary text-sm"
                                 >Baca →</a
                             >
                         </div>
@@ -846,7 +846,7 @@
 
             <!-- CTA -->
             <div class="text-center mt-12">
-                <a href="#" class="btn btn-primary btn-lg">
+                <a href="#sd" class="btn btn-primary btn-lg">
                     Baca Semua Artikel
                 </a>
             </div>
@@ -1092,28 +1092,28 @@
                 <ul class="space-y-2 text-sm">
                     <li>
                         <a
-                            href="#"
+                            href="#sd"
                             class="link link-hover text-neutral-content hover:text-primary"
                             >Web Development</a
                         >
                     </li>
                     <li>
                         <a
-                            href="#"
+                            href="#sd"
                             class="link link-hover text-neutral-content hover:text-primary"
                             >UI/UX Design</a
                         >
                     </li>
                     <li>
                         <a
-                            href="#"
+                            href="#sd"
                             class="link link-hover text-neutral-content hover:text-primary"
                             >Consulting</a
                         >
                     </li>
                     <li>
                         <a
-                            href="#"
+                            href="#sd"
                             class="link link-hover text-neutral-content hover:text-primary"
                             >Support</a
                         >
@@ -1157,17 +1157,17 @@
             </p>
             <div class="flex gap-6 text-sm">
                 <a
-                    href="#"
+                    href="#sd"
                     class="link link-hover text-neutral-content hover:text-primary"
                     >Privacy Policy</a
                 >
                 <a
-                    href="#"
+                    href="#sd"
                     class="link link-hover text-neutral-content hover:text-primary"
                     >Terms of Service</a
                 >
                 <a
-                    href="#"
+                    href="#sd"
                     class="link link-hover text-neutral-content hover:text-primary"
                     >Sitemap</a
                 >
