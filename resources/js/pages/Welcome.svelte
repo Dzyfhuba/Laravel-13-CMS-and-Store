@@ -4,8 +4,13 @@
     import { toUrl } from '@/lib/utils';
     import { dashboard, login } from '@/routes';
     import { register } from '@/routes';
-    import MyPhoto from '@/assets/ma-photo.png';
-    import BgImgOnboarding from '@/assets/seni.png';
+    // @ts-ignore
+    import MyPhoto from '@/assets/ma-photo.png?format=webp&quality=10,50,75';
+    // @ts-ignore
+    import BgImgOnboarding from '@/assets/seni.png?format=webp&quality=10,50,75';
+    // @ts-ignore
+    import IllustrationImg from '@/assets/ilustrasi.png?format=webp&quality=10,50,75';
+    import { lazyLoad } from '@/lib/lazyload';
 
     const auth = $derived(page.props.auth);
     let mobileMenuOpen = $state(false);
@@ -17,6 +22,7 @@
     function closeMobileMenu() {
         mobileMenuOpen = false;
     }
+    const inlinePlaceholder = "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='100' height='50' viewBox='0 0 100 50'><rect width='100%' height='100%' fill='%23ccc'/></svg>";
 </script>
 
 <AppHead></AppHead>
@@ -127,12 +133,14 @@
     <div
         class="relative z-20 mx-auto flex min-h-[calc(100vh-64px)] max-w-7xl items-center justify-center px-6 lg:px-12"
     >
-        <div
-            class="w-full h-screen grid grid-cols-1 lg:grid-cols-2"
-        >
+        <div class="w-full h-screen grid grid-cols-1 lg:grid-cols-2">
             <!-- Left: Photo/Visual with Layered Background -->
-            <div class="order-2 lg:order-1 flex items-end justify-center lg:justify-start">
-                <div class="relative w-full lg:max-w-2xl h-80 sm:h-96 md:h-125 lg:h-162.5 top-0">
+            <div
+                class="order-2 lg:order-1 flex items-end justify-center lg:justify-start"
+            >
+                <div
+                    class="relative w-full lg:max-w-2xl h-80 sm:h-96 md:h-125 lg:h-162.5 top-0"
+                >
                     <!-- Background Artwork (Latar Belakang) -->
                     <img
                         src={BgImgOnboarding}
@@ -140,16 +148,29 @@
                         class="absolute inset-0 w-full h-full object-cover opacity-60 rounded-xl"
                     />
                     <!-- Photo (Gambar Utama) -->
-                    <img
+                    <!-- <enhanced:img
                         src={MyPhoto}
                         alt="hafidz ubaidillah"
+                        fetchpriority="high"
                         class="absolute inset-0 w-full h-full object-cover rounded-xl drop-shadow-2xl"
-                    />
+                    /> -->
+                    <picture>
+                        <source srcset={MyPhoto} type="image/webp" />
+                        <img
+                            src={inlinePlaceholder}
+                            alt="hafidz ubaidillah"
+                            fetchpriority="high"
+                            class="absolute inset-0 w-full h-full object-cover rounded-xl drop-shadow-2xl"
+                            use:lazyLoad={MyPhoto}
+                        />
+                    </picture>
                 </div>
             </div>
 
             <!-- Right: Text Content -->
-            <div class="order-1 lg:order-2 text-center lg:text-left lg:self-center flex flex-col justify-end">
+            <div
+                class="order-1 lg:order-2 text-center lg:text-left lg:self-center flex flex-col justify-end"
+            >
                 <p
                     class="text-sm font-semibold uppercase tracking-[0.25em] text-primary/80"
                 >
@@ -198,18 +219,26 @@
                     <h2 class="text-3xl lg:text-4xl font-black tracking-tight">
                         Tentang Hafidz Ubaidillah
                     </h2>
-                    <p class="mt-4 text-base leading-8 text-base-content/80">
-                        Saya adalah fullstack web developer dengan pengalaman
-                        dalam membangun aplikasi web modern, responsif, dan
-                        scalable. Spesialisasi saya mencakup frontend
-                        development dengan React, Svelte, dan Vue.js, serta
-                        backend dengan Laravel, Node.js, dan Python.
+                    <p
+                        class="mt-4 text-base leading-8 text-justify text-base-content/80"
+                    >
+                        Saya adalah seorang Software Developer lulusan Teknik
+                        Informatika dengan pengalaman membangun solusi digital
+                        modern yang terukur. Spesialisasi saya mencakup
+                        pengembangan lintas platform untuk web dan mobile
+                        menggunakan Laravel, Flutter, React, dan Svelte, serta
+                        perancangan spesifikasi sistem (SRS).
                     </p>
-                    <p class="mt-4 text-base leading-8 text-base-content/80">
-                        Saya percaya pada pentingnya user experience yang baik,
-                        clean code, dan best practices dalam development. Selalu
-                        semangat untuk belajar teknologi baru dan mengoptimalkan
-                        workflow development.
+                    <p
+                        class="mt-4 text-base leading-8 text-justify text-base-content/80"
+                    >
+                        Selain berfokus pada pengalaman pengguna dan struktur
+                        kode yang rapi, saya memiliki keahlian kuat dalam
+                        manajemen infrastruktur. Saya terbiasa mengelola
+                        environment server berbasis Linux, optimasi VPS, hingga
+                        deployment aplikasi menggunakan Docker untuk memastikan
+                        reliabilitas dan performa aplikasi dari sisi hulu hingga
+                        hilir.
                     </p>
                     <div
                         class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
@@ -229,13 +258,32 @@
                     <div
                         class="w-full aspect-square bg-linear-to-br from-primary/20 to-secondary/20 rounded-2xl flex items-center justify-center border-2 border-dashed border-primary/40"
                     >
-                        <div class="text-center">
+                        <!-- <div class="text-center">
                             <p
                                 class="text-sm text-base-content/60 font-semibold"
                             >
                                 [PERLU GAMBAR: Foto Profesional]
                             </p>
-                        </div>
+                        </div> -->
+                        <!-- <enhanced:img
+                            srcset={IllustrationImg}
+                            alt="Illustration"
+                            loading="lazy"
+                            class="w-full h-full object-cover object-left"
+                        /> -->
+                        <picture>
+                            <source
+                                srcset={IllustrationImg}
+                                type="image/webp"
+                            />
+                            <img
+                                src={inlinePlaceholder}
+                                alt="Illustration"
+                                loading="lazy"
+                                class="w-full h-full object-cover object-left"
+                                use:lazyLoad={IllustrationImg}
+                            />
+                        </picture>
                     </div>
                 </div>
             </div>
