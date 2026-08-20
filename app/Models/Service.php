@@ -14,6 +14,8 @@ class Service extends Model
         'name',
         'description_short',
         'description_long',
+        'icon',
+        'scope',
         'thumbnail',
         'carousel',
         'content',

@@ -3,8 +3,10 @@
 namespace App\Filament\Admin\Resources\Services\Schemas;
 
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TagsInput;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Tabs;
@@ -22,6 +24,23 @@ class ServiceForm
                 TextInput::make('name')->required()->columnSpanFull(),
                 TextInput::make('description_short'),
                 TextInput::make('description_long'),
+                Textarea::make('icon')->helperText('Format: <svg>...</svg>'),
+                TextEntry::make('icon_preview')
+                    ->label('Pratinjau Ikon')
+                    ->state(function ($get) {
+                        $icon = $get('icon');
+
+                        if (!$icon) {
+                            return 'Masukkan kode SVG di atas untuk melihat pratinjau.';
+                        }
+
+                        return new HtmlString("
+                            <div style='width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; border: 1px solid #ccc; border-radius: 0.5rem;'>
+                                {$icon}
+                            </div>
+                        ");
+                    }),
+                MarkdownEditor::make('scope')->columnSpanFull(),
                 FileUpload::make('thumbnail')->image(),
                 Repeater::make('carousel')
                     ->columnSpanFull()

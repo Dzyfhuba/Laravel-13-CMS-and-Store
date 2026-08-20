@@ -11,6 +11,7 @@
     // @ts-ignore
     import IllustrationImg from '@/assets/ilustrasi.png?format=webp&quality=10,50,75';
     import { lazyLoad } from '@/lib/lazyload';
+    import { marked } from 'marked';
 
     const auth = $derived(page.props.auth);
     let mobileMenuOpen = $state(false);
@@ -22,7 +23,10 @@
     function closeMobileMenu() {
         mobileMenuOpen = false;
     }
-    const inlinePlaceholder = "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='100' height='50' viewBox='0 0 100 50'><rect width='100%' height='100%' fill='%23ccc'/></svg>";
+    const inlinePlaceholder =
+        "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='100' height='50' viewBox='0 0 100 50'><rect width='100%' height='100%' fill='%23ccc'/></svg>";
+
+    let { products, services, projects, blogs } = $props();
 </script>
 
 <AppHead></AppHead>
@@ -319,88 +323,36 @@
             <!-- Product Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Product Card 1 -->
-                <div
-                    class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow"
-                >
-                    <!-- PERLU GAMBAR: Screenshot atau thumbnail produk 1 -->
+                {#each products as product}
                     <div
-                        class="h-48 bg-linear-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-base-300"
+                        class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow"
                     >
-                        <p class="text-sm text-base-content/60 font-semibold">
-                            [PERLU GAMBAR: Produk 1]
-                        </p>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title text-lg">
-                            [template nama_produk_1]
-                        </h3>
-                        <p class="text-sm text-base-content/70">
-                            Deskripsi singkat tentang produk atau solusi yang
-                            telah dibuat dengan fitur-fitur unggulan.
-                        </p>
-                        <div class="card-actions justify-end mt-4">
-                            <a href="#sd" class="link link-primary text-sm"
-                                >Pelajari Lebih Lanjut →</a
-                            >
+                        <!-- PERLU GAMBAR: Screenshot atau thumbnail produk 1 -->
+                        <div
+                            class="h-48 bg-linear-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-base-300"
+                        >
+                            <img
+                                src={product.thumbnail}
+                                alt={product.name}
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title text-lg">
+                                [template nama_produk_1]
+                            </h3>
+                            <p class="text-sm text-base-content/70">
+                                Deskripsi singkat tentang produk atau solusi
+                                yang telah dibuat dengan fitur-fitur unggulan.
+                            </p>
+                            <div class="card-actions justify-end mt-4">
+                                <a href="#sd" class="link link-primary text-sm"
+                                    >Pelajari Lebih Lanjut →</a
+                                >
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Product Card 2 -->
-                <div
-                    class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow"
-                >
-                    <!-- PERLU GAMBAR: Screenshot atau thumbnail produk 2 -->
-                    <div
-                        class="h-48 bg-linear-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-base-300"
-                    >
-                        <p class="text-sm text-base-content/60 font-semibold">
-                            [PERLU GAMBAR: Produk 2]
-                        </p>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title text-lg">
-                            [template nama_produk_2]
-                        </h3>
-                        <p class="text-sm text-base-content/70">
-                            Deskripsi singkat tentang produk atau solusi yang
-                            telah dibuat dengan fitur-fitur unggulan.
-                        </p>
-                        <div class="card-actions justify-end mt-4">
-                            <a href="#sd" class="link link-primary text-sm"
-                                >Pelajari Lebih Lanjut →</a
-                            >
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product Card 3 -->
-                <div
-                    class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow"
-                >
-                    <!-- PERLU GAMBAR: Screenshot atau thumbnail produk 3 -->
-                    <div
-                        class="h-48 bg-linear-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-base-300"
-                    >
-                        <p class="text-sm text-base-content/60 font-semibold">
-                            [PERLU GAMBAR: Produk 3]
-                        </p>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title text-lg">
-                            [template nama_produk_3]
-                        </h3>
-                        <p class="text-sm text-base-content/70">
-                            Deskripsi singkat tentang produk atau solusi yang
-                            telah dibuat dengan fitur-fitur unggulan.
-                        </p>
-                        <div class="card-actions justify-end mt-4">
-                            <a href="#sd" class="link link-primary text-sm"
-                                >Pelajari Lebih Lanjut →</a
-                            >
-                        </div>
-                    </div>
-                </div>
+                {/each}
             </div>
 
             <!-- CTA Button -->
@@ -440,6 +392,31 @@
 
             <!-- Services Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {#each services as service}
+                    <div
+                        class="bg-base-100 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow"
+                    >
+                        <!-- PERLU GAMBAR: Icon atau ilustrasi untuk Web Development -->
+                        <div
+                            class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center mb-4"
+                        >
+                            <span class="text-2xl max-h-8 max-w-8 object-contain">{@html service.icon}</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">{service.name}</h3>
+                        {@html marked(service.scope || '')}
+                        <!-- <p class="text-base-content/70 mb-4">
+                            Membangun website dan aplikasi web modern dengan
+                            teknologi terkini, responsif, dan performance
+                            optimal untuk bisnis Anda.
+                        </p>
+                        <ul class="space-y-2 text-sm text-base-content/70">
+                            <li>✓ Frontend Development (React, Svelte, Vue)</li>
+                            <li>✓ Backend Development (Laravel, Node.js)</li>
+                            <li>✓ Full Stack Solutions</li>
+                            <li>✓ API Development & Integration</li>
+                        </ul> -->
+                    </div>
+                {/each}
                 <!-- Service 1 -->
                 <div
                     class="bg-base-100 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow"
