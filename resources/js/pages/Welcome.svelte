@@ -143,7 +143,7 @@
                 class="order-2 lg:order-1 flex items-end justify-center lg:justify-start"
             >
                 <div
-                    class="relative w-full lg:max-w-2xl h-80 sm:h-96 md:h-125 lg:h-162.5 top-0"
+                    class="relative w-full lg:max-w-2xl h-80 sm:h-96 md:h-125 lg:h-162.5 top-0 overflow-visible"
                 >
                     <!-- Background Artwork (Latar Belakang) -->
                     <img
