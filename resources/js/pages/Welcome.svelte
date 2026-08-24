@@ -339,14 +339,17 @@
                         </div>
                         <div class="card-body">
                             <h3 class="card-title text-lg">
-                                [template nama_produk_1]
+                                {product.name}
                             </h3>
                             <p class="text-sm text-base-content/70">
-                                Deskripsi singkat tentang produk atau solusi
-                                yang telah dibuat dengan fitur-fitur unggulan.
+                                {product.description_short}
                             </p>
                             <div class="card-actions justify-end mt-4">
-                                <a href="#sd" class="link link-primary text-sm"
+                                <a
+                                    href={route('products.show', {
+                                        product: product.id,
+                                    })}
+                                    class="link link-primary text-sm"
                                     >Pelajari Lebih Lanjut →</a
                                 >
                             </div>
@@ -357,7 +360,10 @@
 
             <!-- CTA Button -->
             <div class="text-center mt-12">
-                <a href="#sd" class="btn btn-primary btn-lg">
+                <a
+                    href={route('products.index')}
+                    class="btn btn-primary btn-lg"
+                >
                     Lihat Semua Produk
                 </a>
             </div>
@@ -400,118 +406,17 @@
                         <div
                             class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center mb-4"
                         >
-                            <span class="text-2xl max-h-8 max-w-8 object-contain">{@html service.icon}</span>
+                            <span
+                                class="text-2xl max-h-8 max-w-8 object-contain"
+                                >{@html service.icon}</span
+                            >
                         </div>
                         <h3 class="text-xl font-bold mb-3">{service.name}</h3>
-                        {@html marked(service.scope || '')}
-                        <!-- <p class="text-base-content/70 mb-4">
-                            Membangun website dan aplikasi web modern dengan
-                            teknologi terkini, responsif, dan performance
-                            optimal untuk bisnis Anda.
-                        </p>
-                        <ul class="space-y-2 text-sm text-base-content/70">
-                            <li>✓ Frontend Development (React, Svelte, Vue)</li>
-                            <li>✓ Backend Development (Laravel, Node.js)</li>
-                            <li>✓ Full Stack Solutions</li>
-                            <li>✓ API Development & Integration</li>
-                        </ul> -->
+                        <div class="text-base-content/70 mb-4">
+                            {@html marked(service.scope || '')}
+                        </div>
                     </div>
                 {/each}
-                <!-- Service 1 -->
-                <div
-                    class="bg-base-100 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow"
-                >
-                    <!-- PERLU GAMBAR: Icon atau ilustrasi untuk Web Development -->
-                    <div
-                        class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center mb-4"
-                    >
-                        <span class="text-2xl">🚀</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Web Development</h3>
-                    <p class="text-base-content/70 mb-4">
-                        Membangun website dan aplikasi web modern dengan
-                        teknologi terkini, responsif, dan performance optimal
-                        untuk bisnis Anda.
-                    </p>
-                    <ul class="space-y-2 text-sm text-base-content/70">
-                        <li>✓ Frontend Development (React, Svelte, Vue)</li>
-                        <li>✓ Backend Development (Laravel, Node.js)</li>
-                        <li>✓ Full Stack Solutions</li>
-                        <li>✓ API Development & Integration</li>
-                    </ul>
-                </div>
-
-                <!-- Service 2 -->
-                <div
-                    class="bg-base-100 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow"
-                >
-                    <!-- PERLU GAMBAR: Icon atau ilustrasi untuk UI/UX Design -->
-                    <div
-                        class="w-16 h-16 bg-secondary/20 rounded-lg flex items-center justify-center mb-4"
-                    >
-                        <span class="text-2xl">🎨</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">UI/UX Design</h3>
-                    <p class="text-base-content/70 mb-4">
-                        Merancang antarmuka yang indah, intuitif, dan
-                        user-friendly untuk memberikan pengalaman terbaik kepada
-                        pengguna.
-                    </p>
-                    <ul class="space-y-2 text-sm text-base-content/70">
-                        <li>✓ User Interface Design</li>
-                        <li>✓ User Experience Research</li>
-                        <li>✓ Wireframing & Prototyping</li>
-                        <li>✓ Design System Development</li>
-                    </ul>
-                </div>
-
-                <!-- Service 3 -->
-                <div
-                    class="bg-base-100 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow"
-                >
-                    <!-- PERLU GAMBAR: Icon atau ilustrasi untuk Konsultasi -->
-                    <div
-                        class="w-16 h-16 bg-accent/20 rounded-lg flex items-center justify-center mb-4"
-                    >
-                        <span class="text-2xl">💡</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Technical Consulting</h3>
-                    <p class="text-base-content/70 mb-4">
-                        Memberikan konsultasi teknis untuk optimasi teknologi,
-                        architecture design, dan strategi digital bisnis Anda.
-                    </p>
-                    <ul class="space-y-2 text-sm text-base-content/70">
-                        <li>✓ Technology Selection</li>
-                        <li>✓ Architecture Review</li>
-                        <li>✓ Performance Optimization</li>
-                        <li>✓ Best Practices & Standards</li>
-                    </ul>
-                </div>
-
-                <!-- Service 4 -->
-                <div
-                    class="bg-base-100 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow"
-                >
-                    <!-- PERLU GAMBAR: Icon atau ilustrasi untuk Maintenance & Support -->
-                    <div
-                        class="w-16 h-16 bg-info/20 rounded-lg flex items-center justify-center mb-4"
-                    >
-                        <span class="text-2xl">🔧</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">
-                        Maintenance & Support
-                    </h3>
-                    <p class="text-base-content/70 mb-4">
-                        Layanan pemeliharaan dan dukungan teknis berkelanjutan
-                        untuk memastikan aplikasi Anda selalu berjalan optimal.
-                    </p>
-                    <ul class="space-y-2 text-sm text-base-content/70">
-                        <li>✓ Bug Fixing & Troubleshooting</li>
-                        <li>✓ Feature Enhancement</li>
-                        <li>✓ Security Updates</li>
-                        <li>✓ Performance Monitoring</li>
-                    </ul>
-                </div>
             </div>
 
             <!-- CTA -->
@@ -523,7 +428,7 @@
                     href="[template email_atau_contact_link]"
                     class="btn btn-primary btn-lg"
                 >
-                    Hubungi Saya untuk Konsultasi Gratis
+                    Hubungi Saya untuk Konsultasi Gratis (perlu form di admin)
                 </a>
             </div>
         </div>
@@ -557,166 +462,59 @@
 
             <!-- Project Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Project Card 1 -->
-                <div
-                    class="group overflow-hidden rounded-xl bg-base-100 shadow-md hover:shadow-xl transition-all"
-                >
-                    <!-- PERLU GAMBAR: Screenshot proyek 1 -->
+                {#each projects as project}
                     <div
-                        class="h-64 bg-linear-to-br from-primary/20 to-secondary/20 flex items-center justify-center overflow-hidden"
+                        class="group overflow-hidden rounded-xl bg-base-100 shadow-md hover:shadow-xl transition-all"
                     >
-                        <p class="text-sm text-base-content/60 font-semibold">
-                            [PERLU GAMBAR: Proyek 1]
-                        </p>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">
-                            [template nama_proyek_1]
-                        </h3>
-                        <p class="text-sm text-base-content/70 mb-4">
-                            Deskripsi proyek dengan detail tentang teknologi
-                            yang digunakan, tantangan yang dihadapi, dan solusi
-                            yang diberikan.
-                        </p>
-                        <div class="mb-4">
-                            <p
-                                class="text-xs font-semibold text-base-content/60 mb-2"
-                            >
-                                TEKNOLOGI:
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="badge badge-sm">React</span>
-                                <span class="badge badge-sm">Laravel</span>
-                                <span class="badge badge-sm">PostgreSQL</span>
-                            </div>
-                        </div>
-                        <a href="#sd" class="link link-primary text-sm"
-                            >Lihat Detail Proyek →</a
+                        <!-- PERLU GAMBAR: Screenshot proyek 1 -->
+                        <div
+                            class="h-64 bg-linear-to-br from-primary/20 to-secondary/20 flex items-center justify-center overflow-hidden"
                         >
-                    </div>
-                </div>
-
-                <!-- Project Card 2 -->
-                <div
-                    class="group overflow-hidden rounded-xl bg-base-100 shadow-md hover:shadow-xl transition-all"
-                >
-                    <!-- PERLU GAMBAR: Screenshot proyek 2 -->
-                    <div
-                        class="h-64 bg-linear-to-br from-primary/20 to-secondary/20 flex items-center justify-center overflow-hidden"
-                    >
-                        <p class="text-sm text-base-content/60 font-semibold">
-                            [PERLU GAMBAR: Proyek 2]
-                        </p>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">
-                            [template nama_proyek_2]
-                        </h3>
-                        <p class="text-sm text-base-content/70 mb-4">
-                            Deskripsi proyek dengan detail tentang teknologi
-                            yang digunakan, tantangan yang dihadapi, dan solusi
-                            yang diberikan.
-                        </p>
-                        <div class="mb-4">
-                            <p
-                                class="text-xs font-semibold text-base-content/60 mb-2"
-                            >
-                                TEKNOLOGI:
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="badge badge-sm">Vue.js</span>
-                                <span class="badge badge-sm">Node.js</span>
-                                <span class="badge badge-sm">MongoDB</span>
-                            </div>
+                            <img
+                                src={project.thumbnail}
+                                alt={project.name}
+                                class="w-full h-full object-cover"
+                            />
                         </div>
-                        <a href="#sd" class="link link-primary text-sm"
-                            >Lihat Detail Proyek →</a
-                        >
-                    </div>
-                </div>
-
-                <!-- Project Card 3 -->
-                <div
-                    class="group overflow-hidden rounded-xl bg-base-100 shadow-md hover:shadow-xl transition-all"
-                >
-                    <!-- PERLU GAMBAR: Screenshot proyek 3 -->
-                    <div
-                        class="h-64 bg-linear-to-br from-primary/20 to-secondary/20 flex items-center justify-center overflow-hidden"
-                    >
-                        <p class="text-sm text-base-content/60 font-semibold">
-                            [PERLU GAMBAR: Proyek 3]
-                        </p>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">
-                            [template nama_proyek_3]
-                        </h3>
-                        <p class="text-sm text-base-content/70 mb-4">
-                            Deskripsi proyek dengan detail tentang teknologi
-                            yang digunakan, tantangan yang dihadapi, dan solusi
-                            yang diberikan.
-                        </p>
-                        <div class="mb-4">
-                            <p
-                                class="text-xs font-semibold text-base-content/60 mb-2"
-                            >
-                                TEKNOLOGI:
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">
+                                {project.name}
+                            </h3>
+                            <p class="text-sm text-base-content/70 mb-4">
+                                {project.description_short}
                             </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="badge badge-sm">Svelte</span>
-                                <span class="badge badge-sm">Python</span>
-                                <span class="badge badge-sm">Firebase</span>
+                            <div class="mb-4">
+                                <p
+                                    class="text-xs font-semibold text-base-content/60 mb-2"
+                                >
+                                    TEKNOLOGI:
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <!-- {#each project.technologies as tech}
+                                    <span class="badge badge-sm">{tech}</span>
+                                {/each} -->
+                                    <span class="badge badge-sm">React</span>
+                                    <span class="badge badge-sm">Laravel</span>
+                                    <span class="badge badge-sm"
+                                        >PostgreSQL</span
+                                    >
+                                </div>
                             </div>
-                        </div>
-                        <a href="#sd" class="link link-primary text-sm"
-                            >Lihat Detail Proyek →</a
-                        >
-                    </div>
-                </div>
-
-                <!-- Project Card 4 -->
-                <div
-                    class="group overflow-hidden rounded-xl bg-base-100 shadow-md hover:shadow-xl transition-all"
-                >
-                    <!-- PERLU GAMBAR: Screenshot proyek 4 -->
-                    <div
-                        class="h-64 bg-linear-to-br from-primary/20 to-secondary/20 flex items-center justify-center overflow-hidden"
-                    >
-                        <p class="text-sm text-base-content/60 font-semibold">
-                            [PERLU GAMBAR: Proyek 4]
-                        </p>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">
-                            [template nama_proyek_4]
-                        </h3>
-                        <p class="text-sm text-base-content/70 mb-4">
-                            Deskripsi proyek dengan detail tentang teknologi
-                            yang digunakan, tantangan yang dihadapi, dan solusi
-                            yang diberikan.
-                        </p>
-                        <div class="mb-4">
-                            <p
-                                class="text-xs font-semibold text-base-content/60 mb-2"
+                            <a
+                                href={route('projects.show', {
+                                    id: project.id,
+                                })}
+                                class="link link-primary text-sm"
+                                >Lihat Detail Proyek →</a
                             >
-                                TEKNOLOGI:
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="badge badge-sm">Next.js</span>
-                                <span class="badge badge-sm">GraphQL</span>
-                                <span class="badge badge-sm">Docker</span>
-                            </div>
                         </div>
-                        <a href="#sd" class="link link-primary text-sm"
-                            >Lihat Detail Proyek →</a
-                        >
                     </div>
-                </div>
+                {/each}
             </div>
 
             <!-- CTA -->
             <div class="text-center mt-12">
-                <a href="#sd" class="btn btn-primary btn-lg">
+                <a href={route('projects.index')} class="btn btn-primary btn-lg">
                     Lihat Semua Proyek
                 </a>
             </div>
@@ -751,127 +549,56 @@
 
             <!-- Blog Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Blog Card 1 -->
-                <div
-                    class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow"
-                >
-                    <!-- PERLU GAMBAR: Featured image untuk blog 1 -->
+                {#each blogs as blog}
                     <div
-                        class="h-40 bg-linear-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-base-300"
+                        class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow"
                     >
-                        <p class="text-sm text-base-content/60 font-semibold">
-                            [PERLU GAMBAR: Blog 1]
-                        </p>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title text-base">
-                            [template judul_artikel_1]
-                        </h3>
-                        <p class="text-xs text-base-content/60">
-                            [template tanggal_publikasi] • 5 min read
-                        </p>
-                        <p class="text-sm text-base-content/70">
-                            Ringkasan singkat dari artikel yang membahas topik
-                            menarik terkait web development, tips coding, atau
-                            pengalaman pribadi.
-                        </p>
+                        <!-- PERLU GAMBAR: Featured image untuk blog 1 -->
                         <div
-                            class="card-actions justify-between items-center mt-4"
+                            class="h-40 bg-linear-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-base-300"
                         >
-                            <div class="flex gap-2">
-                                <span class="badge badge-sm badge-outline"
-                                    >[template kategori_1]</span
+                            <img
+                                src={blog.thumbnail}
+                                alt={blog.title}
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title text-base">
+                                {blog.title}
+                            </h3>
+                            <p class="text-xs text-base-content/60">
+                                {blog.updated_at} • 5 min read
+                            </p>
+                            <p class="text-sm text-base-content/70">
+                                Ringkasan singkat dari artikel yang membahas
+                                topik menarik terkait web development, tips
+                                coding, atau pengalaman pribadi.
+                            </p>
+                            <div
+                                class="card-actions justify-between items-center mt-4"
+                            >
+                                <div class="flex gap-2">
+                                    {#if blog.tags.length > 0}
+                                        <span
+                                            class="badge badge-sm badge-outline"
+                                            >{blog.tags[0]}</span
+                                        >
+                                    {/if}
+                                </div>
+                                <a
+                                    href={blog.url}
+                                    class="link link-primary text-sm">Baca →</a
                                 >
                             </div>
-                            <a href="#sd" class="link link-primary text-sm"
-                                >Baca →</a
-                            >
                         </div>
                     </div>
-                </div>
-
-                <!-- Blog Card 2 -->
-                <div
-                    class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow"
-                >
-                    <!-- PERLU GAMBAR: Featured image untuk blog 2 -->
-                    <div
-                        class="h-40 bg-linear-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-base-300"
-                    >
-                        <p class="text-sm text-base-content/60 font-semibold">
-                            [PERLU GAMBAR: Blog 2]
-                        </p>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title text-base">
-                            [template judul_artikel_2]
-                        </h3>
-                        <p class="text-xs text-base-content/60">
-                            [template tanggal_publikasi] • 7 min read
-                        </p>
-                        <p class="text-sm text-base-content/70">
-                            Ringkasan singkat dari artikel yang membahas topik
-                            menarik terkait web development, tips coding, atau
-                            pengalaman pribadi.
-                        </p>
-                        <div
-                            class="card-actions justify-between items-center mt-4"
-                        >
-                            <div class="flex gap-2">
-                                <span class="badge badge-sm badge-outline"
-                                    >[template kategori_2]</span
-                                >
-                            </div>
-                            <a href="#sd" class="link link-primary text-sm"
-                                >Baca →</a
-                            >
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Blog Card 3 -->
-                <div
-                    class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow"
-                >
-                    <!-- PERLU GAMBAR: Featured image untuk blog 3 -->
-                    <div
-                        class="h-40 bg-linear-to-br from-primary/10 to-secondary/10 flex items-center justify-center border-b border-base-300"
-                    >
-                        <p class="text-sm text-base-content/60 font-semibold">
-                            [PERLU GAMBAR: Blog 3]
-                        </p>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title text-base">
-                            [template judul_artikel_3]
-                        </h3>
-                        <p class="text-xs text-base-content/60">
-                            [template tanggal_publikasi] • 6 min read
-                        </p>
-                        <p class="text-sm text-base-content/70">
-                            Ringkasan singkat dari artikel yang membahas topik
-                            menarik terkait web development, tips coding, atau
-                            pengalaman pribadi.
-                        </p>
-                        <div
-                            class="card-actions justify-between items-center mt-4"
-                        >
-                            <div class="flex gap-2">
-                                <span class="badge badge-sm badge-outline"
-                                    >[template kategori_3]</span
-                                >
-                            </div>
-                            <a href="#sd" class="link link-primary text-sm"
-                                >Baca →</a
-                            >
-                        </div>
-                    </div>
-                </div>
+                {/each}
             </div>
 
             <!-- CTA -->
             <div class="text-center mt-12">
-                <a href="#sd" class="btn btn-primary btn-lg">
+                <a href="{route('blogs.index')}" class="btn btn-primary btn-lg">
                     Baca Semua Artikel
                 </a>
             </div>
