@@ -9,6 +9,7 @@
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
         @fonts
+        @routes
 
         @vite(['resources/css/app.css', 'resources/js/app.ts'])
         <x-inertia::head>
