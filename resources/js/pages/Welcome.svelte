@@ -26,7 +26,7 @@
     const inlinePlaceholder =
         "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='100' height='50' viewBox='0 0 100 50'><rect width='100%' height='100%' fill='%23ccc'/></svg>";
 
-    let { products, services, projects, blogs } = $props();
+    let { home, products, services, projects, blogs } = $props();
 </script>
 
 <AppHead></AppHead>
@@ -178,28 +178,28 @@
                 <p
                     class="text-sm font-semibold uppercase tracking-[0.25em] text-primary/80"
                 >
-                    Fullstack Web Developer
+                    {home.onboarding__profession}
                 </p>
                 <h1
                     class="mt-4 text-4xl font-black tracking-tight sm:text-5xl lg:text-6xl text-base-content"
                 >
-                    Hafidz Ubaidillah
+                    {home.onboarding__full_name}
                 </h1>
                 <p
                     class="mt-5 text-base leading-8 text-base-content/80 sm:text-lg"
                 >
-                    Seorang fullstack web developer yang senang mengeksplorasi
-                    hal baru. Saya menikmati membangun solusi digital yang
-                    bermanfaat, responsif, dan mudah digunakan untuk kebutuhan
-                    bisnis maupun pengguna.
+                    {home.onboarding__resume}
                 </p>
                 <p class="mt-4 text-lg font-semibold text-primary">
-                    Terbuka untuk pekerjaan dan project.
+                    {home.onboarding__message}
                 </p>
                 <div
                     class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
                 >
-                    <a href={'#'} class="btn btn-primary">Hubungi Saya</a>
+                    <a
+                        href={home.onboarding__contact_me}
+                        class="btn btn-primary">Hubungi Saya</a
+                    >
                     <a href="#products" class="btn btn-outline"
                         >Lihat Portfolio</a
                     >
