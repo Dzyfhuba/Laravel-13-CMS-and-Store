@@ -38,6 +38,7 @@ class ServicesTable
                     ForceDeleteBulkAction::make(),
                     RestoreBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->reorderable('id');
     }
 }
