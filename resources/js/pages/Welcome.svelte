@@ -406,10 +406,15 @@
                         <div
                             class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center mb-4"
                         >
-                            <span
+                            <!-- <span
                                 class="text-2xl max-h-8 max-w-8 object-contain"
                                 >{@html service.icon}</span
-                            >
+                            > -->
+                            <img
+                                src={service.icon}
+                                alt={service.name}
+                                class="w-8 h-8 object-contain"
+                            />
                         </div>
                         <h3 class="text-xl font-bold mb-3">{service.name}</h3>
                         <div class="text-base-content/70 mb-4">
@@ -514,7 +519,10 @@
 
             <!-- CTA -->
             <div class="text-center mt-12">
-                <a href={route('projects.index')} class="btn btn-primary btn-lg">
+                <a
+                    href={route('projects.index')}
+                    class="btn btn-primary btn-lg"
+                >
                     Lihat Semua Proyek
                 </a>
             </div>
@@ -598,7 +606,7 @@
 
             <!-- CTA -->
             <div class="text-center mt-12">
-                <a href="{route('blogs.index')}" class="btn btn-primary btn-lg">
+                <a href={route('blogs.index')} class="btn btn-primary btn-lg">
                     Baca Semua Artikel
                 </a>
             </div>
