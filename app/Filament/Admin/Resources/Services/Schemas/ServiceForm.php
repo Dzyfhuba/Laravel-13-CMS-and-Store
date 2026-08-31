@@ -24,22 +24,10 @@ class ServiceForm
                 TextInput::make('name')->required()->columnSpanFull(),
                 TextInput::make('description_short'),
                 TextInput::make('description_long'),
-                Textarea::make('icon')->helperText('Format: <svg>...</svg>'),
-                TextEntry::make('icon_preview')
-                    ->label('Pratinjau Ikon')
-                    ->state(function ($get) {
-                        $icon = $get('icon');
-
-                        if (!$icon) {
-                            return 'Masukkan kode SVG di atas untuk melihat pratinjau.';
-                        }
-
-                        return new HtmlString("
-                            <div style='width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; border: 1px solid #ccc; border-radius: 0.5rem;'>
-                                {$icon}
-                            </div>
-                        ");
-                    }),
+                FileUpload::make('icon')
+                    ->image()
+                    ->required()
+                    ->hint('Upload ikon layanan dalam format SVG. Pastikan ukuran file tidak terlalu besar untuk menjaga performa halaman.'),
                 MarkdownEditor::make('scope')->columnSpanFull(),
                 FileUpload::make('thumbnail')->image(),
                 Repeater::make('carousel')
