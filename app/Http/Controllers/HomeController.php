@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\HomePage;
 use App\Models\Product;
 use App\Models\Project;
 use App\Models\Service;
@@ -18,6 +19,8 @@ class HomeController extends Controller
         $projects = Project::latest()->take(4)->get();
         $blogs = Blog::latest()->take(3)->get();
 
+        $home = HomePage::getGroupValue();
+
         for ($i = 0; $i < 4; $i++) {
             if ($i < 3) {
                 $products[$i]->thumbnail = Storage::url($products[$i]->thumbnail);
@@ -32,7 +35,8 @@ class HomeController extends Controller
             'products' => $products,
             'services' => $services,
             'projects' => $projects,
-            'blogs' => $blogs
+            'blogs' => $blogs,
+            'home' => $home,
         ]);
     }
 }
