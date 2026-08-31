@@ -7,11 +7,15 @@ use App\Models\HomePage;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Concerns\InteractsWithSchemas;
 use Filament\Schemas\Contracts\HasSchemas;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Storage;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Str;
 
 class Onboarding extends Page implements HasSchemas
 {
@@ -19,20 +23,32 @@ class Onboarding extends Page implements HasSchemas
 
     protected string $view = 'filament.admin.clusters.home-page-setting.pages.onboarding';
     protected static ?string $cluster = HomePageSettingCluster::class;
+    protected static ?int $navigationSort = 1;
 
     public array $data = [];
+    public array $hints = [];
 
     // mount
     public function mount(): void
     {
         $data = HomePage::getGroup('onboarding');
-        // $this->data = [
-        //     'full_name' => $data['onboarding__full_name'] ?? null,
-        //     'profession' => $data['onboarding__profession'] ?? null,
-        //     'resume' => $data['onboarding__resume'] ?? null,
-        //     'message' => $data['onboarding__message'] ?? null,
-        //     'photo' => $data['onboarding__photo'] ?? null,
-        // ];
+        $this->hints = [
+            'full_name' => $data['onboarding__full_name']['hint'] ?? null,
+            'profession' => $data['onboarding__profession']['hint'] ?? null,
+            'resume' => $data['onboarding__resume']['hint'] ?? null,
+            'message' => $data['onboarding__message']['hint'] ?? null,
+            'photo' => $data['onboarding__photo']['hint'] ?? null,
+            'contact_me' => $data['onboarding__contact_me']['hint'] ?? null,
+        ];
+        // Map the data to the expected structure for the form
+        $this->form->fill([
+            'full_name' => $data['onboarding__full_name']['value'],
+            'profession' => $data['onboarding__profession']['value'],
+            'resume' => $data['onboarding__resume']['value'],
+            'message' => $data['onboarding__message']['value'],
+            'photo' => $data['onboarding__photo']['value'] ?? null,
+            'contact_me' => $data['onboarding__contact_me']['value'] ?? null,
+        ]);
     }
 
     public function form(Schema $schema): Schema
@@ -42,21 +58,30 @@ class Onboarding extends Page implements HasSchemas
                 TextInput::make('full_name')
                     ->required()
                     ->default(fn() => "test")
-                    ->hint(fn() => $this->data['full_name']['hint'] ?? null),
+                    ->label(__('onboarding.full_name'))
+                    ->hint(fn() => __('onboarding.enter_your_full_name')),
                 TextInput::make('profession')
                     ->required()
-                    ->hint(fn() => $this->data['profession']['hint'] ?? null),
+                    ->label(__('onboarding.profession'))
+                    ->hint(__('onboarding.enter_your_profession')),
                 Textarea::make('resume')->required()
                     ->maxLength(200)
-                    ->hint(fn() => $this->data['resume']['hint'] ?? null),
+                    ->label(__('onboarding.resume'))
+                    ->hint(__('onboarding.enter_your_resume_max_200_characters')),
                 TextInput::make('message')
                     ->required()
                     ->maxLength(40)
-                    ->hint(fn() => $this->data['message']['hint'] ?? null),
+                    ->label(__('onboarding.message'))
+                    ->hint(__('onboarding.enter_your_message_max_40_characters_can_be_used_for_motto_or_tagline')),
                 FileUpload::make('photo')
                     ->image()
-                    // ->required()
-                    ->hint(fn() => $this->data['photo']['hint'] ?? null),
+                    ->required()
+                    ->label(__('onboarding.photo'))
+                    ->hint(__('onboarding.upload_your_photo')),
+                TextInput::make('contact_me')
+                    ->required()
+                    ->label(__('onboarding.contact_me'))
+                    ->hint(__('onboarding.enter_your_contact_link_whatsapp_or_email')),
             ])
             ->statePath('data');
     }
@@ -66,14 +91,31 @@ class Onboarding extends Page implements HasSchemas
     public function submit(): void
     {
         $this->validate();
-        dd($this->data);
 
-        HomePage::set('onboarding__full_name', $this->data['full_name'], $this->data['full_name']['hint'] ?? null, 1);
-        HomePage::set('onboarding__profession', $this->data['profession'], $this->data['profession']['hint'] ?? null, 2);
-        HomePage::set('onboarding__resume', $this->data['resume'], $this->data['resume']['hint'] ?? null, 3);
-        HomePage::set('onboarding__message', $this->data['message'], $this->data['message']['hint'] ?? null, 4);
-        HomePage::set('onboarding__photo', $this->data['photo'], $this->data['photo']['hint'] ?? null, 5);
+        HomePage::set('onboarding__full_name', $this->data['full_name']);
+        HomePage::set('onboarding__profession', $this->data['profession']);
+        HomePage::set('onboarding__resume', $this->data['resume']);
+        HomePage::set('onboarding__message', $this->data['message']);
+        HomePage::set('onboarding__contact_me', $this->data['contact_me']);
 
-        $this->notify('success', 'Onboarding settings updated successfully.');
+        // Upload File
+        // Move temporary uploaded photo to the desired location and save the path
+        if ($this->data['photo']) {
+            $photo = null; // must be Livewire\Features\SupportFileUploads\TemporaryUploadedFile
+            foreach ($this->data['photo'] as $file) {
+                if ($file instanceof TemporaryUploadedFile) {
+                    $photo = $file;
+                    break;
+                }
+            }
+            $newNameFile = Str::ulid()->toString() . "." . $photo->getClientOriginalExtension();
+            $photo->storePubliclyAs('', $newNameFile);
+            HomePage::set('onboarding__photo', $newNameFile);
+        }
+
+        Notification::make()
+            ->title('Saved')
+            ->success()
+            ->send();
     }
 }
