@@ -14,11 +14,11 @@ class HomePage extends Model
         'hint',
     ];
 
-    public static function set(string $key, string $value, string $hint = null, ?int $sortOrder = null, ?string $image = null): void
+    public static function set(string $key, string|array $value, string $hint = null, ?int $sortOrder = null, ?string $image = null): void
     {
         static::updateOrCreate(
             ['key' => $key],
-            ['value' => $value, 'hint' => $hint, 'sort_order' => $sortOrder, 'image' => $image]
+            ['value' => is_array($value) ? json_encode($value) : $value, 'hint' => $hint, 'sort_order' => $sortOrder, 'image' => $image]
         );
     }
 
@@ -40,6 +40,17 @@ class HomePage extends Model
     {
         $group = static::query()->where('key', 'like', "{$key}__%")->orderBy('sort_order', 'asc')->get()->keyBy('key');
 
+        return $group->toArray();
+    }
+
+    public static function getGroupValue(string $key = ""): ?array
+    {
+        $group = null;
+        if (empty($key)) {
+            $group = static::query()->orderBy('sort_order', 'asc')->pluck('value', 'key');
+        } else {
+            $group = static::query()->where('key', 'like', "{$key}__%")->orderBy('sort_order', 'asc')->pluck('value', 'key');
+        }
         return $group->toArray();
     }
 }
