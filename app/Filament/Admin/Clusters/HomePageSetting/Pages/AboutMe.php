@@ -15,6 +15,7 @@ class AboutMe extends Page implements HasSchemas
 
     protected string $view = 'filament.admin.clusters.home-page-setting.pages.about-me';
     protected static ?string $cluster = HomePageSettingCluster::class;
+    protected static ?int $navigationSort = 2;
 
     public function form(Schema $schema): Schema
     {
