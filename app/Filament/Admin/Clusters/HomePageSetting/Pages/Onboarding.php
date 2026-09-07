@@ -32,14 +32,7 @@ class Onboarding extends Page implements HasSchemas
     public function mount(): void
     {
         $data = HomePage::getGroup('onboarding');
-        $this->hints = [
-            'full_name' => $data['onboarding__full_name']['hint'] ?? null,
-            'profession' => $data['onboarding__profession']['hint'] ?? null,
-            'resume' => $data['onboarding__resume']['hint'] ?? null,
-            'message' => $data['onboarding__message']['hint'] ?? null,
-            'photo' => $data['onboarding__photo']['hint'] ?? null,
-            'contact_me' => $data['onboarding__contact_me']['hint'] ?? null,
-        ];
+
         // Map the data to the expected structure for the form
         $this->form->fill([
             'full_name' => $data['onboarding__full_name']['value'],
@@ -48,6 +41,7 @@ class Onboarding extends Page implements HasSchemas
             'message' => $data['onboarding__message']['value'],
             'photo' => $data['onboarding__photo']['value'] ?? null,
             'contact_me' => $data['onboarding__contact_me']['value'] ?? null,
+            'portfolio' => $data['onboarding__portfolio']['value'] ?? null,
         ]);
     }
 
@@ -82,6 +76,10 @@ class Onboarding extends Page implements HasSchemas
                     ->required()
                     ->label(__('onboarding.contact_me'))
                     ->hint(__('onboarding.enter_your_contact_link_whatsapp_or_email')),
+                TextInput::make('portfolio')
+                    ->required()
+                    ->label(__('onboarding.portfolio'))
+                    ->hint(__('onboarding.enter_your_portfolio_link')),
             ])
             ->statePath('data');
     }
@@ -97,10 +95,11 @@ class Onboarding extends Page implements HasSchemas
         HomePage::set('onboarding__resume', $this->data['resume']);
         HomePage::set('onboarding__message', $this->data['message']);
         HomePage::set('onboarding__contact_me', $this->data['contact_me']);
+        HomePage::set('onboarding__portfolio', $this->data['portfolio']);
 
         // Upload File
         // Move temporary uploaded photo to the desired location and save the path
-        if ($this->data['photo']) {
+        if (array_values($this->data['photo'])[0] !== $this->form->getState()['photo']) {
             $photo = null; // must be Livewire\Features\SupportFileUploads\TemporaryUploadedFile
             foreach ($this->data['photo'] as $file) {
                 if ($file instanceof TemporaryUploadedFile) {

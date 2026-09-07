@@ -200,8 +200,11 @@
                         href={home.onboarding__contact_me}
                         class="btn btn-primary">Hubungi Saya</a
                     >
-                    <a href="#products" class="btn btn-outline"
-                        >Lihat Portfolio</a
+                    <a
+                        href={home.onboarding__portfolio}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-outline">Lihat Portfolio</a
                     >
                 </div>
             </div>
