@@ -159,7 +159,11 @@
                         class="absolute inset-0 w-full h-full object-cover rounded-xl drop-shadow-2xl"
                     /> -->
                     <picture>
-                        <source srcset={MyPhoto} type="image/webp" />
+                        <!-- <source srcset={MyPhoto} type="image/webp" /> -->
+                        <source
+                            srcset={home.onboarding__photo || MyPhoto}
+                            type="image/webp"
+                        />
                         <img
                             src={inlinePlaceholder}
                             alt="hafidz ubaidillah"
@@ -224,9 +228,9 @@
                 <!-- Teks Content -->
                 <div class="order-2 lg:order-1 text-center lg:text-left">
                     <h2 class="text-3xl lg:text-4xl font-black tracking-tight">
-                        Tentang Hafidz Ubaidillah
+                        Tentang {home.onboarding__full_name}
                     </h2>
-                    <p
+                    <!-- <p
                         class="mt-4 text-base leading-8 text-justify text-base-content/80"
                     >
                         Saya adalah seorang Software Developer lulusan Teknik
@@ -246,7 +250,8 @@
                         deployment aplikasi menggunakan Docker untuk memastikan
                         reliabilitas dan performa aplikasi dari sisi hulu hingga
                         hilir.
-                    </p>
+                    </p> -->
+                    <p>{@html marked(home.about_me__introduction)}</p>
                     <div
                         class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
                     >
@@ -279,8 +284,12 @@
                             class="w-full h-full object-cover object-left"
                         /> -->
                         <picture>
-                            <source
+                            <!-- <source
                                 srcset={IllustrationImg}
+                                type="image/webp"
+                            /> -->
+                            <source
+                                srcset={home.about_me__image || IllustrationImg}
                                 type="image/webp"
                             />
                             <img
@@ -288,7 +297,8 @@
                                 alt="Illustration"
                                 loading="lazy"
                                 class="w-full h-full object-cover object-left"
-                                use:lazyLoad={IllustrationImg}
+                                use:lazyLoad={home.about_me__image ||
+                                    IllustrationImg}
                             />
                         </picture>
                     </div>

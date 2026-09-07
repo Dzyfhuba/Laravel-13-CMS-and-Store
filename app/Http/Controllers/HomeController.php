@@ -31,6 +31,9 @@ class HomeController extends Controller
             $services[$i]->icon = Storage::url($services[$i]->icon);
         }
 
+        $home['onboarding__photo'] = Storage::url($home['onboarding__photo']);
+        $home['about_me__image'] = Storage::url($home['about_me__image']);
+
         return inertia('Welcome', [
             'products' => $products,
             'services' => $services,
