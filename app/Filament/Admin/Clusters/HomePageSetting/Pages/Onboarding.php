@@ -9,11 +9,9 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
-use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Concerns\InteractsWithSchemas;
 use Filament\Schemas\Contracts\HasSchemas;
 use Filament\Schemas\Schema;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Str;
 
@@ -22,11 +20,12 @@ class Onboarding extends Page implements HasSchemas
     use InteractsWithSchemas;
 
     protected string $view = 'filament.admin.clusters.home-page-setting.pages.onboarding';
+
     protected static ?string $cluster = HomePageSettingCluster::class;
+
     protected static ?int $navigationSort = 1;
 
     public array $data = [];
-    public array $hints = [];
 
     // mount
     public function mount(): void
@@ -51,9 +50,9 @@ class Onboarding extends Page implements HasSchemas
             ->components([
                 TextInput::make('full_name')
                     ->required()
-                    ->default(fn() => "test")
+                    ->default(fn () => 'test')
                     ->label(__('onboarding.full_name'))
-                    ->hint(fn() => __('onboarding.enter_your_full_name')),
+                    ->hint(fn () => __('onboarding.enter_your_full_name')),
                 TextInput::make('profession')
                     ->required()
                     ->label(__('onboarding.profession'))
@@ -107,13 +106,23 @@ class Onboarding extends Page implements HasSchemas
                     break;
                 }
             }
-            $newNameFile = Str::ulid()->toString() . "." . $photo->getClientOriginalExtension();
+
+            if ($photo === null) {
+                Notification::make()
+                    ->title(__('global.record_not_saved', ['record' => __('onboarding.onboarding')]))
+                    ->danger()
+                    ->send();
+
+                return;
+            }
+
+            $newNameFile = Str::ulid()->toString().'.'.$photo->getClientOriginalExtension();
             $photo->storePubliclyAs('', $newNameFile);
             HomePage::set('onboarding__photo', $newNameFile);
         }
 
         Notification::make()
-            ->title('Saved')
+            ->title(__('global.record_saved', ['record' => __('onboarding.onboarding')]))
             ->success()
             ->send();
     }
