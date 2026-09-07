@@ -76,12 +76,12 @@ class AboutMe extends Page implements HasSchemas
         $imageState = $this->data['about_me__image'] ?? null;
         $imageState = is_array($imageState) ? $imageState : [$imageState];
         $image = collect($imageState)->first(
-            fn (mixed $file): bool => $file instanceof TemporaryUploadedFile,
+            fn(mixed $file): bool => $file instanceof TemporaryUploadedFile,
         );
 
         if ($image instanceof TemporaryUploadedFile) {
 
-            $newNameFile = Str::ulid()->toString().'.'.$image->getClientOriginalExtension();
+            $newNameFile = Str::ulid()->toString() . '.' . $image->getClientOriginalExtension();
             $image->storePubliclyAs('', $newNameFile);
             HomePage::set('about_me__image', $newNameFile);
         }
