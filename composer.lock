@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d2731960f5e4f625938ae976c4580a34",
+    "content-hash": "4aaaf716731c85dbe95d2f57d0aa057f",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -9829,6 +9829,80 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "anil/dump",
+            "version": "v0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/anilkumarthakur60/dump.git",
+                "reference": "1626d6e1d4f2294351f42273a7467dc8559b912e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/anilkumarthakur60/dump/zipball/1626d6e1d4f2294351f42273a7467dc8559b912e",
+                "reference": "1626d6e1d4f2294351f42273a7467dc8559b912e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "^11.0|^12.0|^13.0",
+                "illuminate/console": "^11.0|^12.0|^13.0",
+                "illuminate/http": "^11.0|^12.0|^13.0",
+                "illuminate/log": "^11.0|^12.0|^13.0",
+                "illuminate/support": "^11.0|^12.0|^13.0",
+                "php": "^8.2",
+                "symfony/var-dumper": "^7.0|^8.0"
+            },
+            "require-dev": {
+                "larastan/larastan": "^3.0",
+                "laravel/pint": "^1.29",
+                "mockery/mockery": "^1.6",
+                "orchestra/testbench": "^9.0|^10.0|^11.0",
+                "pestphp/pest": "^4.0",
+                "phpunit/phpunit": "^12.0"
+            },
+            "suggest": {
+                "phpunit/phpunit": "Required to use DumpFake testing utilities (^12.0)"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Anil\\Dump\\DumpServerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Support/helpers.php"
+                ],
+                "psr-4": {
+                    "Anil\\Dump\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anil Kumar Thakur",
+                    "email": "anilkumarthakur60@gmail.com"
+                }
+            ],
+            "description": "A Laravel dump server package for intercepting and displaying dump output.",
+            "keywords": [
+                "debug",
+                "dump",
+                "dump-server",
+                "laravel",
+                "var-dumper"
+            ],
+            "support": {
+                "issues": "https://github.com/anilkumarthakur60/dump/issues",
+                "source": "https://github.com/anilkumarthakur60/dump/tree/v0.1.2"
+            },
+            "time": "2026-05-07T17:26:10+00:00"
+        },
         {
             "name": "brianium/paratest",
             "version": "v7.20.0",

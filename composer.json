@@ -17,6 +17,7 @@
         "tightenco/ziggy": "^2.6"
     },
     "require-dev": {
+        "anil/dump": "^0.1.2",
         "fakerphp/faker": "^1.24",
         "fruitcake/laravel-debugbar": "^4.4",
         "larastan/larastan": "^3.9",
