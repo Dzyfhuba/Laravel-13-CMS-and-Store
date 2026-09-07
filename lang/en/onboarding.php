@@ -13,5 +13,7 @@ return [
   'photo' => 'Photo',
   'upload_your_photo' => 'Upload Your Photo',
   'contact_me' => 'Contact Me',
-  'enter_your_contact_link_whatsapp_or_email' => 'Enter your whatsapp or email link'
+  'enter_your_contact_link_whatsapp_or_email' => 'Enter your whatsapp or email link',
+  'portfolio' => 'Portfolio',
+  'enter_your_portfolio_link' => 'Enter Your Portfolio Link'
 ];

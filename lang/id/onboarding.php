@@ -13,5 +13,7 @@ return [
   'photo' => 'Foto',
   'upload_your_photo' => 'Unggah foto Anda',
   'contact_me' => 'Hubungi Saya',
-  'enter_your_contact_link_whatsapp_or_email' => 'Masukkan link ke whatsapp atau email'
+  'enter_your_contact_link_whatsapp_or_email' => 'Masukkan link ke whatsapp atau email',
+  'portfolio' => 'Portofolio',
+  'enter_your_portfolio_link' => 'Masukkan link portofolio Anda',
 ];
