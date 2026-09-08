@@ -5,6 +5,7 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 import tailwindcss from '@tailwindcss/vite';
 import laravel from 'laravel-vite-plugin';
 import { bunny } from 'laravel-vite-plugin/fonts';
+import path from 'path';
 import { defineConfig } from 'vite';
 import { imagetools } from 'vite-imagetools';
 
@@ -46,4 +47,9 @@ export default defineConfig({
             },
         },
     },
+    resolve: {
+        alias: {
+            '@': path.resolve(import.meta.dirname, './resources/js'),
+        },
+    }
 });
