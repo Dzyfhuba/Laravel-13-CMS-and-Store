@@ -115,6 +115,7 @@ export default ts.config(
             '@stylistic': stylistic,
         },
         rules: {
+            'svelte/no-at-html-tags': 'off',
             curly: ['error', 'all'],
             '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: false }],
         },
