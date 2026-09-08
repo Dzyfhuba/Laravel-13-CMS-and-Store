@@ -6,6 +6,25 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/*
+ * @property int $id
+ * @property string $name
+ * @property string $description_short
+ * @property string $description_long
+ * @property string $icon
+ * @property string $scope
+ * @property string $thumbnail
+ * @property array $carousel
+ * @property string $content
+ * @property array $tags
+ * @property array $related_projects
+ * @property array $related_products
+ * @property array $related_services
+ * @property array $related_blogs
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property \Carbon\Carbon $deleted_at
+ */
 class Service extends Model
 {
     use SoftDeletes, HasFactory;
