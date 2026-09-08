@@ -1,19 +1,15 @@
 <script lang="ts">
-    import { Link, page } from '@inertiajs/svelte';
-    import AppHead from '@/components/AppHead.svelte';
-    import { toUrl } from '@/lib/utils';
-    import { dashboard, login } from '@/routes';
-    import { register } from '@/routes';
-    // @ts-ignore
-    import MyPhoto from '@/assets/ma-photo.png?format=webp&quality=10,50,75';
-    // @ts-ignore
-    import BgImgOnboarding from '@/assets/seni.png?format=webp&quality=10,50,75';
-    // @ts-ignore
-    import IllustrationImg from '@/assets/ilustrasi.png?format=webp&quality=10,50,75';
-    import { lazyLoad } from '@/lib/lazyload';
     import { marked } from 'marked';
+    // @ts-expect-error due to Vite's handling of image imports, we use a query string to specify the desired format and quality. This allows us to import images in WebP format with different quality levels for optimization.
+    import IllustrationImg from '@/assets/ilustrasi.png?format=webp&quality=10,50,75';
+    // @ts-expect-error due to Vite's handling of image imports, we use a query string to specify the desired format and quality. This allows us to import images in WebP format with different quality levels for optimization.
+    import MyPhoto from '@/assets/ma-photo.png?format=webp&quality=10,50,75';
+    // @ts-expect-error due to Vite's handling of image imports, we use a query string to specify the desired format and quality. This allows us to import images in WebP format with different quality levels for optimization.
+    import BgImgOnboarding from '@/assets/seni.png?format=webp&quality=10,50,75';
+    import AppHead from '@/components/AppHead.svelte';
+    import { lazyLoad } from '@/lib/lazyload';
+    import type { Blog, Product, Project, Service } from '@/types/models';
 
-    const auth = $derived(page.props.auth);
     let mobileMenuOpen = $state(false);
 
     function toggleMobileMenu() {
@@ -26,7 +22,15 @@
     const inlinePlaceholder =
         "data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='100' height='50' viewBox='0 0 100 50'><rect width='100%' height='100%' fill='%23ccc'/></svg>";
 
-    let { home, products, services, projects, blogs } = $props();
+    let { home, products, services, projects, blogs } = $props() as {
+        home: {
+            [key: string]: string;
+        };
+        products: Product[];
+        services: Service[];
+        projects: Project[];
+        blogs: Blog[];
+    };
 </script>
 
 <AppHead></AppHead>
@@ -255,7 +259,10 @@
                     <div
                         class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
                     >
-                        <a href={'#'} class="btn btn-primary">Hubungi Saya</a>
+                        <a
+                            href={home.onboarding__contact_me}
+                            class="btn btn-primary">Hubungi Saya</a
+                        >
                         <a href="#projects" class="btn btn-outline"
                             >Lihat Portfolio</a
                         >
@@ -336,7 +343,7 @@
             <!-- Product Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Product Card 1 -->
-                {#each products as product}
+                {#each products as product (product.id)}
                     <div
                         class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow"
                     >
@@ -411,7 +418,7 @@
 
             <!-- Services Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {#each services as service}
+                {#each services as service (service.id)}
                     <div
                         class="bg-base-100 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow"
                     >
@@ -480,7 +487,7 @@
 
             <!-- Project Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {#each projects as project}
+                {#each projects as project (project.id)}
                     <div
                         class="group overflow-hidden rounded-xl bg-base-100 shadow-md hover:shadow-xl transition-all"
                     >
@@ -570,7 +577,7 @@
 
             <!-- Blog Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {#each blogs as blog}
+                {#each blogs as blog (blog.id)}
                     <div
                         class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow"
                     >
@@ -580,13 +587,13 @@
                         >
                             <img
                                 src={blog.thumbnail}
-                                alt={blog.title}
+                                alt={blog.name}
                                 class="w-full h-full object-cover"
                             />
                         </div>
                         <div class="card-body">
                             <h3 class="card-title text-base">
-                                {blog.title}
+                                {blog.name}
                             </h3>
                             <p class="text-xs text-base-content/60">
                                 {blog.updated_at} • 5 min read
@@ -600,15 +607,17 @@
                                 class="card-actions justify-between items-center mt-4"
                             >
                                 <div class="flex gap-2">
-                                    {#if blog.tags.length > 0}
+                                    {#if ((blog.tags as string[]) || []).length > 0}
                                         <span
                                             class="badge badge-sm badge-outline"
-                                            >{blog.tags[0]}</span
+                                            >{blog.tags?.[0]}</span
                                         >
                                     {/if}
                                 </div>
                                 <a
-                                    href={blog.url}
+                                    href={route('blogs.show', {
+                                        blog: blog.slug,
+                                    })}
                                     class="link link-primary text-sm">Baca →</a
                                 >
                             </div>
