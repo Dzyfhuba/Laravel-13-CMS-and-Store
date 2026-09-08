@@ -28,27 +28,27 @@ declare module '@inertiajs/core' {
 }
 
 declare module '*.png?*' {
-  const src: string;
-  export default src;
+    const src: string;
+    export default src;
 }
 
 declare module '*.jpg?*' {
-  const src: string;
-  export default src;
+    const src: string;
+    export default src;
 }
 
 declare module '*.jpeg?*' {
-  const src: string;
-  export default src;
+    const src: string;
+    export default src;
 }
 
 declare module '*.svg?*' {
-  const src: string;
-  export default src;
+    const src: string;
+    export default src;
 }
 
 // Example: Typing for specific plugins like vite-imagetools
 declare module '*.jpg?w=*' {
-  const srcSet: string;
-  export default srcSet;
+    const srcSet: string;
+    export default srcSet;
 }
