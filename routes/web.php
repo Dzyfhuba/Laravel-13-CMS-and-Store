@@ -24,4 +24,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
 });
 
+Route::get('{specialPage:slug}', [App\Http\Controllers\SpecialPageController::class, 'show'])->name('special-pages.show');
+
 require __DIR__ . '/settings.php';
