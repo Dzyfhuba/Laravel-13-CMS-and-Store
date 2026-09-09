@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /*
  * @property int $id
@@ -60,5 +61,12 @@ class HomePage extends Model
             $group = static::query()->where('key', 'like', "{$key}__%")->orderBy('sort_order', 'asc')->pluck('value', 'key');
         }
         return $group->toArray();
+    }
+
+    public static function getValueWithoutGroup(string $key): ?string
+    {
+        $homePage = static::where('key', 'like', "{$key}__%")->first();
+
+        return Str::substrReplace($homePage?->value, '', 0, strlen("{$key}__"));
     }
 }
